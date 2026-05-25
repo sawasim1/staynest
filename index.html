@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayNest | Vacation homes and experiences</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="#" aria-label="StayNest home">
+        <span class="brand-mark">S</span>
+        <span>staynest</span>
+      </a>
+
+      <div class="nav-tabs" aria-label="Explore">
+        <button class="nav-tab active" data-view="homes">Homes</button>
+        <button class="nav-tab" data-view="experiences">Experiences</button>
+        <button class="nav-tab" data-view="services">Services</button>
+      </div>
+
+      <div class="nav-actions">
+        <button class="host-link" type="button" data-open-host>Become a host</button>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-theme-toggle>
+          <span class="theme-toggle-thumb">
+            <svg class="theme-icon sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-13a1 1 0 0 1-1-1V2a1 1 0 1 1 2 0v1a1 1 0 0 1-1 1Zm0 19a1 1 0 0 1-1-1v-1a1 1 0 1 1 2 0v1a1 1 0 0 1-1 1ZM4 13H3a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Zm17 0h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2ZM6 7a1 1 0 0 1-.7-.3l-.7-.7A1 1 0 0 1 6 4.6l.7.7A1 1 0 0 1 6 7Zm12.7 12.7-.7-.7a1 1 0 0 1 1.4-1.4l.7.7a1 1 0 0 1-1.4 1.4ZM5.3 19.7a1 1 0 0 1 0-1.4l.7-.7A1 1 0 0 1 7.4 19l-.7.7a1 1 0 0 1-1.4 0ZM18 7a1 1 0 0 1-.7-1.7l.7-.7A1 1 0 0 1 19.4 6l-.7.7A1 1 0 0 1 18 7Z"/>
+            </svg>
+            <svg class="theme-icon moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 14.6A7.7 7.7 0 0 1 9.4 4a.8.8 0 0 0-.9-1.1 9.5 9.5 0 1 0 12.6 12.6.8.8 0 0 0-1.1-.9Z"/>
+            </svg>
+          </span>
+        </button>
+        <button class="circle-button" type="button" aria-label="Choose language" data-toggle-language>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.4 9h-3.2a15.5 15.5 0 0 0-1.1-5 8 8 0 0 1 4.3 5ZM12 4.1c.8 1.1 1.6 3.1 1.9 6.9h-3.8c.3-3.8 1.1-5.8 1.9-6.9ZM4.3 13h3.5a17 17 0 0 0 1 5.3A8 8 0 0 1 4.3 13Zm3.5-2H4.6a8 8 0 0 1 4.3-5 15.5 15.5 0 0 0-1.1 5Zm4.2 8.9c-.8-1.1-1.6-3.1-1.9-6.9h3.8c-.3 3.8-1.1 5.8-1.9 6.9Zm3.1-1.6a17 17 0 0 0 1-5.3h3.5a8 8 0 0 1-4.5 5.3Z"/></svg>
+        </button>
+        <button class="profile-button" type="button" aria-label="Open user menu" data-toggle-menu>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v2H4V7Zm0 4h16v2H4v-2Zm0 4h16v2H4v-2Z"/></svg>
+          <span class="avatar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <form class="search-panel" aria-label="Search stays" id="searchForm">
+      <label class="search-segment">
+        <span>Where</span>
+        <input id="destinationInput" type="search" placeholder="Search destinations" autocomplete="off">
+      </label>
+      <label class="search-segment">
+        <span>Check in</span>
+        <input id="checkInInput" type="date">
+      </label>
+      <label class="search-segment">
+        <span>Check out</span>
+        <input id="checkOutInput" type="date">
+      </label>
+      <label class="search-segment">
+        <span>Who</span>
+        <input id="guestInput" type="number" min="1" max="12" value="1" aria-label="Guests">
+      </label>
+      <button class="search-submit" type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20.7 19.3-4.2-4.2a7.5 7.5 0 1 0-1.4 1.4l4.2 4.2 1.4-1.4ZM4.5 10.5a6 6 0 1 1 12 0 6 6 0 0 1-12 0Z"/></svg>
+      </button>
+    </form>
+  </header>
+
+  <main>
+    <section class="category-strip" aria-label="Stay categories">
+      <button class="category active" type="button" data-category="all"><span class="category-icon beach"></span>All stays</button>
+      <button class="category" type="button" data-category="beachfront"><span class="category-icon beach"></span>Beachfront</button>
+      <button class="category" type="button" data-category="cabins"><span class="category-icon cabin"></span>Cabins</button>
+      <button class="category" type="button" data-category="city"><span class="category-icon city"></span>City stays</button>
+      <button class="category" type="button" data-category="views"><span class="category-icon view"></span>Views</button>
+      <button class="category" type="button" data-category="trending"><span class="category-icon trend"></span>Trending</button>
+      <button class="category" type="button" data-category="pools"><span class="category-icon pool"></span>Pools</button>
+      <button class="category" type="button" data-category="off-grid"><span class="category-icon compass"></span>Off-grid</button>
+      <button class="filter-button" type="button" aria-pressed="false" data-open-filters>Filters</button>
+    </section>
+
+    <section class="hero-band">
+      <div>
+        <p class="eyebrow" id="viewLabel">Fresh picks for summer</p>
+        <h1 id="viewTitle">Find a place that feels made for the trip.</h1>
+      </div>
+      <button class="text-link" type="button" data-flexible>Explore flexible dates</button>
+    </section>
+
+    <section class="results-bar" aria-live="polite">
+      <p id="resultCount"></p>
+      <button type="button" id="clearFilters">Clear filters</button>
+    </section>
+
+    <section class="listing-grid" aria-label="Available stays" id="listingGrid"></section>
+    <section class="empty-state" id="emptyState" hidden>
+      <h2>No stays match that search</h2>
+      <p>Try another destination, fewer guests, or a lower price.</p>
+      <button type="button" data-reset-search>Reset search</button>
+    </section>
+
+    <section class="host-panel" id="hosting">
+      <div>
+        <p class="eyebrow">Hosting made simple</p>
+        <h2>Open your home to travelers with tools built around trust.</h2>
+      </div>
+      <button type="button" data-open-host>Start hosting</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <section>
+      <h2>Inspiration for future getaways</h2>
+      <div class="footer-tabs" id="footerTabs">
+        <button type="button" data-footer="popular">Popular</button>
+        <button type="button" data-footer="beach">Beach</button>
+        <button type="button" data-footer="mountains">Mountains</button>
+        <button type="button" data-footer="city">City escapes</button>
+      </div>
+      <div class="destination-links" id="destinationLinks"></div>
+    </section>
+    <div class="footer-bottom">
+      <span>&copy; 2026 StayNest</span>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Support</a>
+    </div>
+  </footer>
+
+  <div class="popover" id="profileMenu" hidden>
+    <button type="button" data-open-auth>Log in or sign up</button>
+    <button type="button" data-open-trips>Trips</button>
+    <button type="button" data-open-wishlist>Wishlists</button>
+    <button type="button" data-logout hidden>Log out</button>
+  </div>
+
+  <div class="popover language-popover" id="languageMenu" hidden>
+    <button type="button" data-currency="USD">English (US) / USD</button>
+    <button type="button" data-currency="EUR">English (EU) / EUR</button>
+    <button type="button" data-currency="PKR">English / PKR</button>
+  </div>
+
+  <aside class="drawer" id="filterDrawer" aria-label="Filters" hidden>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <h2>Filters</h2>
+        <button type="button" class="icon-close" data-close-filters aria-label="Close filters">x</button>
+      </div>
+      <label class="field">
+        <span>Maximum nightly price</span>
+        <input id="priceRange" type="range" min="100" max="500" step="10" value="500">
+        <strong id="priceValue">$500+</strong>
+      </label>
+      <fieldset>
+        <legend>Must have</legend>
+        <label><input type="checkbox" value="wifi" class="amenity-filter"> Fast wifi</label>
+        <label><input type="checkbox" value="kitchen" class="amenity-filter"> Kitchen</label>
+        <label><input type="checkbox" value="pool" class="amenity-filter"> Pool</label>
+        <label><input type="checkbox" value="parking" class="amenity-filter"> Parking</label>
+      </fieldset>
+      <button type="button" class="primary-button" data-apply-filters>Show stays</button>
+    </div>
+  </aside>
+
+  <dialog class="listing-dialog" id="listingDialog">
+    <button type="button" class="icon-close dialog-close" data-close-dialog aria-label="Close listing">x</button>
+    <div id="listingDialogContent"></div>
+  </dialog>
+
+  <dialog class="simple-dialog" id="messageDialog">
+    <button type="button" class="icon-close dialog-close" data-close-message aria-label="Close message">x</button>
+    <div id="messageContent"></div>
+  </dialog>
+
+  <dialog class="auth-dialog" id="authDialog">
+    <button type="button" class="icon-close dialog-close" data-close-auth aria-label="Close login">x</button>
+    <section class="auth-panel">
+      <p class="eyebrow">Welcome to StayNest</p>
+      <h2 id="authTitle">Log in or sign up</h2>
+      <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+        <button type="button" class="active" data-auth-tab="login">Log in</button>
+        <button type="button" data-auth-tab="signup">Sign up</button>
+      </div>
+
+      <form id="authForm" class="auth-form">
+        <label>Full name <input name="fullName" type="text" placeholder="Your name"></label>
+        <label>Email <input name="email" type="email" placeholder="you@example.com" required></label>
+        <label>Password <input name="password" type="password" minlength="6" placeholder="At least 6 characters" required></label>
+        <label class="check-label auth-terms"><input name="terms" type="checkbox"> I agree to StayNest terms and privacy policy.</label>
+        <button type="submit" class="primary-button" id="authSubmit">Log in</button>
+      </form>
+
+      <div class="auth-divider"><span>or continue with</span></div>
+      <div class="social-grid">
+        <button type="button" data-social-auth="Google"><span class="social-mark google">G</span> Google</button>
+        <button type="button" data-social-auth="Facebook"><span class="social-mark facebook">f</span> Facebook</button>
+        <button type="button" data-social-auth="Apple"><span class="social-mark apple">A</span> Apple</button>
+        <button type="button" data-social-auth="X"><span class="social-mark x-mark">X</span> X</button>
+      </div>
+      <p class="auth-note">Social buttons create a local demo session only. Real Google, Facebook, Apple, and X login needs backend OAuth setup.</p>
+    </section>
+  </dialog>
+
+  <dialog class="host-dialog" id="hostDialog">
+    <button type="button" class="icon-close dialog-close" data-close-host aria-label="Close hosting setup">x</button>
+    <form id="hostForm" class="host-flow">
+      <div class="host-flow-head">
+        <p class="eyebrow">Host with StayNest</p>
+        <h2>Add your place</h2>
+        <div class="host-progress" aria-label="Hosting setup progress">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <section class="host-step active" data-step="0">
+        <h3>Property details</h3>
+        <label>Property title <input name="propertyTitle" type="text" placeholder="Sunny loft near the water" required></label>
+        <div class="form-grid">
+          <label>Country
+            <select name="propertyCountry" required>
+              <option value="">Select country</option>
+              <option value="United States">United States</option>
+              <option value="Pakistan">Pakistan</option>
+              <option value="Canada">Canada</option>
+              <option value="Japan">Japan</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Mexico">Mexico</option>
+            </select>
+          </label>
+          <label>City
+            <select name="propertyCity" required disabled>
+              <option value="">Select country first</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-grid">
+          <label>Property type
+            <select name="propertyType" required>
+              <option value="">Choose type</option>
+              <option>Entire home</option>
+              <option>Private room</option>
+              <option>Cabin</option>
+              <option>Villa</option>
+              <option>Apartment</option>
+            </select>
+          </label>
+          <label>Nightly price <span id="hostCurrencyLabel">USD</span><input name="hostPrice" type="number" min="1" placeholder="180" required></label>
+        </div>
+        <div class="form-grid">
+          <label>Guests <input name="hostGuests" type="number" min="1" max="16" value="2" required></label>
+          <label>Bedrooms <input name="hostBedrooms" type="number" min="0" max="12" value="1" required></label>
+        </div>
+      </section>
+
+      <section class="host-step" data-step="1">
+        <h3>Photos</h3>
+        <label>Cover photo <input name="coverPhoto" type="file" accept="image/*" required></label>
+        <label>More photos <input name="galleryPhotos" type="file" accept="image/*" multiple></label>
+        <p class="field-note">Upload 1 cover photo and up to 10 more photos.</p>
+        <label>Short description <textarea name="description" rows="4" placeholder="Describe what makes your stay special" required></textarea></label>
+        <div class="photo-preview-grid" id="hostPhotoPreview">Photo preview</div>
+      </section>
+
+      <section class="host-step" data-step="2">
+        <h3>Availability</h3>
+        <div class="form-grid">
+          <label>Available from <input name="availableFrom" type="date" required></label>
+          <label>Available until <input name="availableUntil" type="date" required></label>
+        </div>
+        <fieldset>
+          <legend>Amenities</legend>
+          <label class="check-label"><input type="checkbox" name="hostAmenities" value="wifi"> Fast wifi</label>
+          <label class="check-label"><input type="checkbox" name="hostAmenities" value="kitchen"> Kitchen</label>
+          <label class="check-label"><input type="checkbox" name="hostAmenities" value="pool"> Pool</label>
+          <label class="check-label"><input type="checkbox" name="hostAmenities" value="parking"> Parking</label>
+        </fieldset>
+      </section>
+
+      <section class="host-step" data-step="3">
+        <h3>Payout setup</h3>
+        <label>Legal name <input name="legalName" type="text" required></label>
+        <label>Email for payout notices <input name="payoutEmail" type="email" required></label>
+        <div class="form-grid">
+          <label>Bank country <input name="bankCountry" type="text" placeholder="United States" required></label>
+          <label>Last 4 digits <input name="bankLast4" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required></label>
+        </div>
+      </section>
+
+      <section class="host-step" data-step="4">
+        <h3>Identity checks</h3>
+        <label>Government ID number <input name="identityNumber" type="text" placeholder="Demo only" required></label>
+        <label class="check-label"><input name="hostAgreement" type="checkbox" required> I confirm this demo listing information is accurate.</label>
+        <div class="host-summary" id="hostSummary"></div>
+      </section>
+
+      <div class="host-flow-actions">
+        <button type="button" class="secondary-button" data-host-back>Back</button>
+        <button type="button" class="primary-button" data-host-next>Next</button>
+        <button type="submit" class="primary-button" data-host-submit hidden>Submit listing</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
